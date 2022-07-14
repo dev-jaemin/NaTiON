@@ -1,38 +1,28 @@
 import { NextPage } from "next";
-import { useRouter } from "next/router";
+import GridWithImage from "../common/GridWithImage";
+import NationTest from "../common/NationTest";
+
+const text = [
+    <h1>
+        Google의 AI가 <br />
+        당신의 스타일을 <br />
+        분석해 드립니다.
+    </h1>,
+    <h3>
+        AI는 세상을 바꾸는 <br />
+        어쩌고저쩌고입니다 <br />
+        어쩌고저쩌고 하고 <br />
+        암튼 짱 좋음 멋짐
+    </h3>,
+];
 
 const Main: NextPage = () => {
-    const router = useRouter();
-
-    const handleCTA = (e: any) => {
-        router.push("/test");
-    };
-
     return (
         <div>
-            <div className="image_section">
-                <h2 className="head_text">나는 어느 나라에서 먹힐까?</h2>
-                <div style={{ height: "50px" }}></div>
-                <div className="main_cta" onClick={handleCTA}>
-                    확인하러 가기
-                </div>
-            </div>
+            <GridWithImage imgUrl="/image/ai_robot.jpg" inner={text[0]} />
+            <GridWithImage imgUrl="/image/blackbackground_small.jpg" inner={text[1]} />
+            <NationTest />
             <style jsx>{`
-                .image_section {
-                    padding: 20px;
-                    text-align: center;
-
-                    color: #ffffff;
-                    background-color: #1c1c1c;
-                }
-                .main_cta {
-                    display: inline-block;
-                    padding: 10px;
-                    border-radius: 3px;
-                    background: #ffffff;
-                    color: #1c1c1c;
-                    font-weight: 700;
-                }
                 @media (min-width: 768px) {
                     .head_text {
                         font-size: 30px;

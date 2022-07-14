@@ -15,6 +15,8 @@ export default function Layout({ children }: AppLayoutProps) {
             <style jsx>{`
                 .wrapper {
                     text-align: center;
+                    background-color: #000000;
+                    overflow: hidden;
                 }
             `}</style>
         </>
