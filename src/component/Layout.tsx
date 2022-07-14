@@ -7,9 +7,16 @@ type AppLayoutProps = {
 export default function Layout({ children }: AppLayoutProps) {
     return (
         <>
-            <Header />
-            <div>{children}</div>
-            <Footer />
+            <div className="wrapper">
+                <Header />
+                <div>{children}</div>
+                <Footer />
+            </div>
+            <style jsx>{`
+                .wrapper {
+                    text-align: center;
+                }
+            `}</style>
         </>
     );
 }
