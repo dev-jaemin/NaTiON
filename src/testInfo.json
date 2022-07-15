@@ -1,0 +1,22 @@
+{
+    "nation": {
+        "title": "나는 어느 나라에서 잘 먹힐까?",
+        "content": "나라는 아주아주 중요해요 왜냐하면 중요하기 때문입니다 좀 더 길게 적을게요.",
+        "imgUrl": "/image/blackworldmap.jpg"
+    },
+    "city": {
+        "title": "나는 어느 도시 사람인가?",
+        "content": "서울대전대구 부산광주울산인천 등등등등 여러분에게 어울리는 도시를 찾아드릴게요~`~~~~~~~",
+        "imgUrl": "/image/blackworldmap.jpg"
+    },
+    "hairStyle": {
+        "title": "어울리는 헤어스타일 찾기",
+        "content": "헤어스타일 중요해요 왜냐하면 중요하기 때문이에요 요즘 미용실 너무 비싼 것 같은데 싼 데 잘 찾아보세요 다들!!",
+        "imgUrl": "/image/blackworldmap.jpg"
+    },
+    "glassStyle": {
+        "title": "어울리는 안경 스타일 찾기",
+        "content": "나라는 아주아주 중요해요 왜냐하면 중요하기 때문입니다 좀 더 길게 적을게요. 참고로 이건 안경 얘깁니다.",
+        "imgUrl": "/image/blackworldmap.jpg"
+    }
+}

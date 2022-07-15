@@ -2,7 +2,7 @@ import { Grid } from "@mui/material";
 
 type GridWithImageProps = {
     imgUrl: string;
-    inner: JSX;
+    inner: JSX.Element;
 };
 
 export default function GridWithImage(props: GridWithImageProps): JSX.Element {

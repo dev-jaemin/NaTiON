@@ -8,7 +8,6 @@ export default function Layout({ children }: AppLayoutProps) {
     return (
         <>
             <div className="wrapper">
-                <Header />
                 <div>{children}</div>
                 <Footer />
             </div>

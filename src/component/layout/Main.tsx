@@ -2,13 +2,14 @@ import { useEffect, useRef } from "react";
 import { NextPage } from "next";
 import { useScroll } from "../../core/hook/useScroll";
 import GridWithImage from "../common/GridWithImage";
-import NationTest from "../common/NationTest";
+import TestGrid from "../common/TestGrid";
 
 const Main: NextPage = () => {
     const scroll = useScroll();
     const firstSectionRef = useRef<HTMLDivElement>();
     const secondSectionRef = useRef<HTMLDivElement>();
     const h3Refs = [useRef<HTMLDivElement>(), useRef<HTMLDivElement>(), useRef<HTMLDivElement>(), useRef<HTMLDivElement>()];
+    const downArrowRef = useRef<HTMLDivElement>();
 
     const text = [
         <div>
@@ -39,6 +40,13 @@ const Main: NextPage = () => {
         h3Refs.forEach((ref, index) => {
             ref.current && (ref.current.style.opacity = String(scroll.scrollY / screen.height - 1 - 0.5 * index));
         });
+
+        // down-arrow hide
+        if (scroll.scrollY > screen.availHeight * 4) {
+            downArrowRef.current && (downArrowRef.current.style.opacity = "0");
+        } else {
+            downArrowRef.current && (downArrowRef.current.style.opacity = "1");
+        }
     }, [scroll.scrollY]);
 
     return (
@@ -50,8 +58,11 @@ const Main: NextPage = () => {
                 <GridWithImage imgUrl="/image/ai_robot4.png" inner={text[1]} />
             </div>
             <div style={{ height: "600vh" }}></div>
+            <TestGrid />
+            <div ref={downArrowRef as React.RefObject<HTMLDivElement>}>
+                <img className="fixed_arrow" src="/image/down_arrow.gif" alt="장식용 이미지" />
+            </div>
 
-            <NationTest />
             <style jsx>{`
                 @media (min-width: 768px) {
                     .head_text {
@@ -65,13 +76,24 @@ const Main: NextPage = () => {
                     transition: opacity 2s ease, transform 1s ease;
                     transform: scale(${Math.min(+scroll.scrollY / 1000 + 1, 2)});
                     z-index: 10;
+                    background: linear-gradient(45deg, DarkBlue, Black);
                 }
                 .second_section {
                     position: fixed;
                     width: 100%;
                     top: 0px;
+                    background: linear-gradient(45deg, Black, DarkBlue);
                     transition: opacity 2s ease, transform 1s ease;
                     opacity: ${scroll.scrollY / 1000 - 0.5};
+                }
+                .fixed_arrow {
+                    position: fixed;
+                    top: 90%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    z-index: 10;
+                    opacity: 0.7;
+                    width: 100px;
                 }
             `}</style>
         </div>
