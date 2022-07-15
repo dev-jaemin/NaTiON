@@ -7,7 +7,7 @@ type GridWithImageProps = {
 
 export default function GridWithImage(props: GridWithImageProps): JSX.Element {
     return (
-        <div style={{ height: "100vh" }}>
+        <div className="grid_wrapper">
             <Grid container spacing={0.5}>
                 <Grid item xs={12} md={4}>
                     <div style={{ position: "relative" }}>
@@ -19,6 +19,11 @@ export default function GridWithImage(props: GridWithImageProps): JSX.Element {
                 </Grid>
             </Grid>
             <style jsx>{`
+                .grid_wrapper {
+                    height: 100vh;
+                    margin: 0 auto;
+                    width: 100%;
+                }
                 .main_text {
                     color: #ffffff;
                     z-index: 5;

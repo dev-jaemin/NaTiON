@@ -17,39 +17,39 @@ const Main: NextPage = () => {
             <h1>분석해 드립니다.</h1>
         </div>,
         <div>
-            <h3 ref={h3Refs[0]}>AI 최고</h3>
-            <h3 ref={h3Refs[1]}>어쩌고 저쩌고</h3>
-            <h3 ref={h3Refs[2]}>이러쿵 저러쿵</h3>
-            <h3 ref={h3Refs[3]}>아몰라 </h3>
+            <h3 ref={h3Refs[0] as React.RefObject<HTMLDivElement>}>AI 최고</h3>
+            <h3 ref={h3Refs[1] as React.RefObject<HTMLDivElement>}>어쩌고 저쩌고</h3>
+            <h3 ref={h3Refs[2] as React.RefObject<HTMLDivElement>}>이러쿵 저러쿵</h3>
+            <h3 ref={h3Refs[3] as React.RefObject<HTMLDivElement>}>아몰라 </h3>
         </div>,
     ];
 
     useEffect(() => {
         // first section animation
-        firstSectionRef.current.style.opacity = -scroll.scrollY / 1000 + 1;
+        firstSectionRef.current && (firstSectionRef.current.style.opacity = String(-scroll.scrollY / 1000 + 1));
 
         // second section animation
-        if (scroll.scrollY < screen.availHeight * 2 && scroll.scrollY > screen.availHeight) {
-            secondSectionRef.current.style.opacity = scroll.scrollY / 1000;
+        if (scroll.scrollY < screen.availHeight * 3 && scroll.scrollY > screen.availHeight) {
+            secondSectionRef.current && (secondSectionRef.current.style.opacity = String(scroll.scrollY / 1000));
         } else {
-            secondSectionRef.current.style.opacity = -scroll.scrollY / 1000;
+            secondSectionRef.current && (secondSectionRef.current.style.opacity = String(-scroll.scrollY / 1000));
         }
 
         // second h3 animation
         h3Refs.forEach((ref, index) => {
-            ref.current.style.opacity = scroll.scrollY / screen.height - 1.2 - 0.2 * index;
+            ref.current && (ref.current.style.opacity = String(scroll.scrollY / screen.height - 1 - 0.5 * index));
         });
     }, [scroll.scrollY]);
 
     return (
         <div>
-            <div className="first_section" ref={firstSectionRef}>
-                <GridWithImage imgUrl="/image/ai_robot.jpg" inner={text[0]} />
+            <div className="first_section" ref={firstSectionRef as React.RefObject<HTMLDivElement>}>
+                <GridWithImage imgUrl="/image/ai_robot3.png" inner={text[0]} />
             </div>
-            <div className="second_section" ref={secondSectionRef}>
-                <GridWithImage imgUrl="/image/blackbackground_small.jpg" inner={text[1]} />
+            <div className="second_section" ref={secondSectionRef as React.RefObject<HTMLDivElement>}>
+                <GridWithImage imgUrl="/image/ai_robot4.png" inner={text[1]} />
             </div>
-            <div style={{ height: "500vh" }}></div>
+            <div style={{ height: "600vh" }}></div>
 
             <NationTest />
             <style jsx>{`
@@ -60,6 +60,7 @@ const Main: NextPage = () => {
                 }
                 .first_section {
                     position: fixed;
+                    width: 100%;
                     opacity: 0;
                     transition: opacity 2s ease, transform 1s ease;
                     transform: scale(${Math.min(+scroll.scrollY / 1000 + 1, 2)});
@@ -67,9 +68,10 @@ const Main: NextPage = () => {
                 }
                 .second_section {
                     position: fixed;
+                    width: 100%;
                     top: 0px;
                     transition: opacity 2s ease, transform 1s ease;
-                    opacity: ${scroll.scrollY / 1000 - 1};
+                    opacity: ${scroll.scrollY / 1000 - 0.5};
                 }
             `}</style>
         </div>

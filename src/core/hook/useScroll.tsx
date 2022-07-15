@@ -8,7 +8,7 @@ export function useScroll() {
         setScrollY(window.pageYOffset);
     };
 
-    const delay = 15;
+    const delay = 10;
 
     useEffect(() => {
         window.addEventListener("scroll", debounce(listener, delay));
