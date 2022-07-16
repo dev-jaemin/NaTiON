@@ -1,8 +1,6 @@
 import { Grid } from "@mui/material";
-import Link from "next/link";
 import Router from "next/router";
 import testData from "../../testInfo.json";
-import NationTest from "./NationTest";
 
 export default function TestGrid(): JSX.Element {
     // const router = useRouter();
@@ -16,7 +14,7 @@ export default function TestGrid(): JSX.Element {
             <Grid container spacing={2}>
                 {Object.keys(testData).map((item, index) => {
                     return (
-                        <Grid item sm={12} lg={6} key={index}>
+                        <Grid item sm={12} md={6} key={index}>
                             <div
                                 className="grid_item"
                                 onClick={() => handleClick(item)}
@@ -40,7 +38,7 @@ export default function TestGrid(): JSX.Element {
                     position: relative;
                     margin: 0px 20px;
                     padding: 30px;
-                    height: 250px;
+                    min-height: 300px;
                     z-index: 30;
                     border: 2px solid #ffffff;
                     border-radius: 10px;
