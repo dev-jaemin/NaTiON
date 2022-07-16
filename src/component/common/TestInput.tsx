@@ -33,7 +33,7 @@ const TestInput: NextPage = (props: TestInputProps) => {
 
                 <div style={{ margin: "30px" }}>
                     <div className="file_input_area">
-                        <input type="file" id="input-file" accept="image/*" style={{ visibility: "hidden" }} onChange={props.onChange} />
+                        <input type="file" id="input-file" accept="image/png, image/jpeg" style={{ visibility: "hidden" }} onChange={props.onChange} />
                         <div>사진 파일 드래그</div>
                     </div>
                     <label className="file_input_button" htmlFor="input-file">

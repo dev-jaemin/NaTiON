@@ -2,14 +2,27 @@ import { ChangeEvent, useState } from "react";
 import axios from "axios";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
+
 import Loading from "../common/Loading";
-import testInfo from "../../testInfo.json";
 import TestInput from "../common/TestInput";
+import Result from "../common/Result";
+
+import testInfo from "../../testInfo.json";
+
+type ResultProps = {
+    resultData: {
+        class: string;
+        content: string;
+        gender: string;
+    };
+};
 
 const Test: NextPage = () => {
     const [img, setImage] = useState("");
     const [gender, setGender] = useState("woman");
     const [loading, setLoading] = useState(false);
+    const [loadComplete, setLoadComplete] = useState(false);
+    const [resultData, setResultData] = useState<ResultProps | {}>({});
     const router = useRouter();
 
     const name = String(router.query.name) || "nation";
@@ -35,9 +48,10 @@ const Test: NextPage = () => {
                     withCredentials: true,
                 })
                 .then((response) => {
-                    console.log(response);
+                    console.log(response.data);
+                    setResultData(response.data);
                     setLoading(false);
-                    router.push("/result");
+                    setLoadComplete(true);
                 });
 
             setLoading(true);
@@ -48,9 +62,8 @@ const Test: NextPage = () => {
 
     return (
         <>
-            {loading ? (
-                <Loading />
-            ) : (
+            {loading ? <Loading /> : ""}
+            {!(loading || loadComplete) ? (
                 <TestInput
                     img={img}
                     setLoading={setLoading}
@@ -63,6 +76,19 @@ const Test: NextPage = () => {
                     name={name}
                     gender={gender}
                 />
+            ) : (
+                ""
+            )}
+            {loadComplete ? (
+                <Result
+                    resultData={resultData}
+                    title={testInfo[name] && testInfo[name].title}
+                    name={name}
+                    subtitle={testInfo[name] && testInfo[name].subtitle}
+                    imgUrl={testInfo[name] && testInfo[name].imgUrl}
+                />
+            ) : (
+                ""
             )}
         </>
     );
