@@ -1,4 +1,4 @@
-import { ChangeEvent, useState, useEffect } from "react";
+import { ChangeEvent, useState } from "react";
 import axios from "axios";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
@@ -7,6 +7,7 @@ import testInfo from "../../testInfo.json";
 
 const Test: NextPage = () => {
     const [img, setImage] = useState("");
+    const [gender, setGender] = useState("woman");
     const [loading, setLoading] = useState(false);
     const router = useRouter();
 
@@ -16,30 +17,38 @@ const Test: NextPage = () => {
         setImage(e.target.files[0]);
     };
 
+    const onChangeGender = (e: ChangeEvent<HTMLInputElement>) => {
+        setGender(e.target.value);
+    };
+
     const onClick = async () => {
-        const formData = new FormData();
-        formData.append("img", img);
-        /*
-            TODO : 파일 이름 인코딩하기
-        */
+        // 정상 파일 검사 후 post 요청
+        if (img !== "") {
+            const formData = new FormData();
 
-        axios
-            .post(`${process.env.NEXT_PUBLIC_APIHOST}/image`, formData, {
-                headers: { "Content-Type": "multipart/form-data" },
-                withCredentials: true,
-            })
-            .then((response) => {
-                console.log(response);
-                setLoading(false);
-                router.push("/result");
-            });
+            formData.append("img", img, String(Date.now()));
 
-        setLoading(true);
+            axios
+                .post(`${process.env.NEXT_PUBLIC_APIHOST}/image?gender=${gender}&testName=${name}`, formData, {
+                    headers: { "Content-Type": "multipart/form-data" },
+                    withCredentials: true,
+                })
+                .then((response) => {
+                    console.log(response);
+                    setLoading(false);
+                    router.push("/result");
+                });
+
+            setLoading(true);
+        } else {
+            window.alert("사진 파일 첨부 바랍니다.");
+        }
     };
 
     return (
         <>
-            <div className="test_wrapper">
+            {loading ? <Loading /> : ""}
+            <div className={"test_wrapper" + (loading ? " none" : "")}>
                 <div style={{ margin: "2rem" }}>
                     <img src={testInfo[name] && testInfo[name].imgUrl} width="500px" alt="사진" />
                 </div>
@@ -51,6 +60,14 @@ const Test: NextPage = () => {
                     그림도 그냥 그림보단 움짤로 넣는 것이 좋을 듯 <br />
                     이정도 길이로 쓰면 적당할 듯????
                 </p>
+                <div>
+                    <h5>성별을 선택해주세요.</h5>
+                    <input id="select_gender" name="select_gender" value="woman" type="radio" onChange={onChangeGender} defaultChecked />
+                    <label>여성</label>
+                    <input id="select_gender" name="select_gender" value="man" type="radio" onChange={onChangeGender} />
+                    <label>남성</label>
+                </div>
+
                 <div style={{ margin: "30px" }}>
                     <div className="file_input_area">
                         <input type="file" id="input-file" accept="image/*" style={{ visibility: "hidden" }} onChange={onChange} />
@@ -98,6 +115,9 @@ const Test: NextPage = () => {
                     padding: 10px;
                     width: 100%;
                     display: block;
+                }
+                .none {
+                    display: none;
                 }
             `}</style>
         </>

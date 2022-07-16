@@ -76,13 +76,13 @@ const Main: NextPage = () => {
                     transition: opacity 2s ease, transform 1s ease;
                     transform: scale(${Math.min(+scroll.scrollY / 1000 + 1, 2)});
                     z-index: 10;
-                    background: linear-gradient(45deg, DarkBlue, Black);
+                    background: linear-gradient(45deg, #2b39a0, #000000);
                 }
                 .second_section {
                     position: fixed;
                     width: 100%;
                     top: 0px;
-                    background: linear-gradient(45deg, Black, DarkBlue);
+                    background: linear-gradient(45deg, #000000, #2b39a0);
                     transition: opacity 2s ease, transform 1s ease;
                     opacity: ${scroll.scrollY / 1000 - 0.5};
                 }

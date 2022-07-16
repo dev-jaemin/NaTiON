@@ -6,7 +6,7 @@ export default function TestGrid(): JSX.Element {
     // const router = useRouter();
     const handleClick = (name: string) => {
         console.log(name);
-        Router.push(`/test?name=${name}`);
+        Router.push(`/test/${name}`);
     };
 
     return (
@@ -18,7 +18,7 @@ export default function TestGrid(): JSX.Element {
                             <div
                                 className="grid_item"
                                 onClick={() => handleClick(item)}
-                                style={{ background: `url("${testData[item].imgUrl}") no-repeat right center #322F9C` }}
+                                style={{ background: `url("${testData[item].imgUrl}") no-repeat right center #2B39A0` }}
                             >
                                 <h3>{testData[item].title}</h3>
                                 <p>{testData[item].content}</p>
