@@ -71,6 +71,7 @@ const Main: NextPage = () => {
                 }
                 .first_section {
                     position: fixed;
+                    padding-top: 3rem;
                     width: 100%;
                     opacity: 0;
                     transition: opacity 2s ease, transform 1s ease;
@@ -80,6 +81,7 @@ const Main: NextPage = () => {
                 }
                 .second_section {
                     position: fixed;
+                    padding-top: 3rem;
                     width: 100%;
                     top: 0px;
                     background: linear-gradient(45deg, #000000, #2b39a0);

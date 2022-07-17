@@ -14,6 +14,7 @@ export default function Layout({ children }: AppLayoutProps) {
     return (
         <>
             <div className="wrapper">
+                <Header />
                 <div className="wrapper_child" ref={child as React.RefObject<HTMLDivElement>}>
                     {children}
                 </div>
@@ -26,6 +27,7 @@ export default function Layout({ children }: AppLayoutProps) {
                     overflow: hidden;
                 }
                 .wrapper_child {
+                    padding-top: 3rem;
                     opacity: 0;
                     transition: opacity 2s ease;
                 }

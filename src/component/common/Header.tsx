@@ -1,3 +1,105 @@
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useState } from "react";
+import testInfo from "../../testInfo.json";
+
 export default function Header(): JSX.Element {
-    return <div>header!!</div>;
+    const [isToggled, setIsToggled] = useState(false);
+    const router = useRouter();
+
+    const onLogoClick = () => {
+        router.push("/");
+    };
+
+    return (
+        <div style={{ position: "fixed", width: "100%", zIndex: "40" }}>
+            <nav className="navBar">
+                <div className="navBar_toggleBtn" onClick={() => setIsToggled(!isToggled)}>
+                    <img src="/image/burger_icon.png" alt="logo" width="32px" />
+                </div>
+                <div className="navBar_logo" onClick={onLogoClick}>
+                    <img src="/image/icon.png" alt="logo" width="32px" />
+                </div>
+                <ul className="navBar_menus">
+                    {Object.keys(testInfo).map((item) => {
+                        return (
+                            <li className="navBar_menus_menu">
+                                <Link href="/test/nation">{testInfo[item].shortTitle}</Link>
+                            </li>
+                        );
+                    })}
+                </ul>
+                <div style={{ width: "32px" }}></div>
+            </nav>
+            {isToggled ? (
+                <ul className="toggleMenus">
+                    {Object.keys(testInfo).map((item) => {
+                        return (
+                            <li className="toggle_menu">
+                                <Link href="/test/nation">{testInfo[item].shortTitle}</Link>
+                            </li>
+                        );
+                    })}
+                </ul>
+            ) : (
+                <></>
+            )}
+            <style jsx>{`
+                .navBar {
+                    width: 100%;
+                    z-index: 35;
+                    background-color: #333333;
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+                    padding: 12px;
+                }
+                .navBar_toggleBtn {
+                    display: none;
+                    cursor: pointer;
+                }
+                .navBar_menus {
+                    display: flex;
+                    list-style: none;
+                    justify-content: space-around;
+                    width: 50%;
+                }
+                .navBar_menus_menu {
+                    color: #ffffff;
+                    text-decoration: none;
+                    cursor: pointer;
+                }
+                .toggleMenus {
+                    margin: 0px;
+                    padding: 0px;
+                    background-color: rgba(50, 50, 50, 0.8);
+                    cursor: pointer;
+                }
+
+                @media screen and (max-width: 768px) {
+                    .navBar {
+                        justify-content: space-between;
+                    }
+                    .navBar_menus {
+                        display: none;
+                    }
+                    .navBar_toggleBtn {
+                        display: flex;
+                        cursor: pointer;
+                    }
+                    .navBar_icons .search {
+                        display: none;
+                    }
+                    .toggle_menu {
+                        padding: 1rem;
+                        color: #ffffff;
+                        list-style: none;
+                    }
+                    .toggle_menu:not(:last-child) {
+                        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+                    }
+                }
+            `}</style>
+        </div>
+    );
 }
