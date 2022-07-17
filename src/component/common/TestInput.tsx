@@ -52,7 +52,6 @@ const TestInput: NextPage = (props: TestInputProps) => {
             <style jsx>{`
                 .test_wrapper {
                     color: #ffffff;
-                    background: linear-gradient(45deg, DarkBlue, Black);
                     padding: 2rem;
                 }
                 .submit_btn {

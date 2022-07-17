@@ -21,10 +21,10 @@ export default function Header(): JSX.Element {
                     <img src="/image/icon.png" alt="logo" width="32px" />
                 </div>
                 <ul className="navBar_menus">
-                    {Object.keys(testInfo).map((item) => {
+                    {Object.keys(testInfo).map((item, index) => {
                         return (
-                            <li className="navBar_menus_menu">
-                                <Link href="/test/nation">{testInfo[item].shortTitle}</Link>
+                            <li className="navBar_menus_menu" key={index}>
+                                <Link href={`/test/${item}`}>{testInfo[item].shortTitle}</Link>
                             </li>
                         );
                     })}
@@ -33,10 +33,10 @@ export default function Header(): JSX.Element {
             </nav>
             {isToggled ? (
                 <ul className="toggleMenus">
-                    {Object.keys(testInfo).map((item) => {
+                    {Object.keys(testInfo).map((item, index) => {
                         return (
-                            <li className="toggle_menu">
-                                <Link href="/test/nation">{testInfo[item].shortTitle}</Link>
+                            <li className="toggle_menu" key={index}>
+                                <Link href={`/test/${item}`}>{testInfo[item].shortTitle}</Link>
                             </li>
                         );
                     })}
