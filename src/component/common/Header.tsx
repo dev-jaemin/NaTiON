@@ -8,6 +8,7 @@ export default function Header(): JSX.Element {
     const router = useRouter();
 
     const onLogoClick = () => {
+        setIsToggled(false);
         router.push("/");
     };
 
@@ -80,6 +81,9 @@ export default function Header(): JSX.Element {
                     margin: 0px;
                     padding: 0px;
                     background-color: rgba(50, 50, 50, 0.8);
+                    cursor: pointer;
+                }
+                .navBar_logo {
                     cursor: pointer;
                 }
 

@@ -32,6 +32,9 @@ export default function Layout({ children }: AppLayoutProps) {
                     font-family: "Spoqa Han Sans Neo", "sans-serif";
                     white-space: pre-wrap;
                 }
+                h1 {
+                    margin: 16px 0px;
+                }
                 .wrapper {
                     text-align: center;
                     background: linear-gradient(90deg, #2b39a0, #000000);

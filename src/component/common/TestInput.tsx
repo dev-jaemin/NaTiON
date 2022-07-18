@@ -10,6 +10,7 @@ type TestInputProps = {
     contentDetail: string;
     name: string;
     gender: string;
+    imgAttachAlarm: React.RefObject<HTMLDivElement>;
 };
 
 const TestInput = (props: TestInputProps) => {
@@ -29,14 +30,16 @@ const TestInput = (props: TestInputProps) => {
                     <label>남성</label>
                 </div>
 
-                <div style={{ margin: "30px 50px", textAlign: "-webkit-center" }}>
+                <div className="attach_wrapper">
                     <div style={{ maxWidth: "500px" }}>
                         <input type="file" id="input-file" accept="image/png, image/jpeg" style={{ display: "none" }} onChange={props.onChange} />
                         <label className="file_input_button" htmlFor="input-file">
                             <img src="/image/attachicon.png" alt="attach icon" />
                             얼굴 사진 업로드
                         </label>
-                        <div className="complete_attach_photo">사진 첨부 완료!</div>
+                        <div className="complete_attach_photo" ref={props.imgAttachAlarm}>
+                            사진 첨부 완료!
+                        </div>
                     </div>
                 </div>
                 <p style={{ fontSize: "0.8rem", opacity: "0.9" }}>
@@ -50,10 +53,6 @@ const TestInput = (props: TestInputProps) => {
                 </button>
             </div>
             <style jsx>{`
-                .test_wrapper {
-                    color: #ffffff;
-                    padding: 1rem;
-                }
                 .submit_btn {
                     display: block;
                     margin: 0 auto;
@@ -72,7 +71,7 @@ const TestInput = (props: TestInputProps) => {
                 }
                 .file_input_button {
                     display: flex;
-                    padding: 1rem 0rem;
+                    padding: 1rem;
                     justify-content: center;
                     align-items: center;
 
@@ -87,6 +86,11 @@ const TestInput = (props: TestInputProps) => {
                     padding: 0.5rem;
                     background-color: green;
                     border-radius: 10px;
+                }
+                .attach_wrapper {
+                    display: flex;
+                    justify-content: center;
+                    margin: 2rem;
                 }
             `}</style>
         </>

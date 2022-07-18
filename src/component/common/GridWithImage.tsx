@@ -10,7 +10,7 @@ export default function GridWithImage(props: GridWithImageProps): JSX.Element {
         <div className="grid_wrapper">
             <Grid container spacing={0.5}>
                 <Grid item xs={12} md={4}>
-                    <div style={{ position: "relative" }}>
+                    <div className="img_wrapper">
                         <img src={props.imgUrl} alt="AI" />
                     </div>
                 </Grid>
@@ -27,6 +27,11 @@ export default function GridWithImage(props: GridWithImageProps): JSX.Element {
                 .main_text {
                     color: #ffffff;
                     z-index: 5;
+                }
+                .img_wrapper {
+                    position: relative;
+                    display: flex;
+                    justify-content: center;
                 }
                 img {
                     height: 400px;
