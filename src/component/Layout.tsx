@@ -21,7 +21,17 @@ export default function Layout({ children }: AppLayoutProps) {
                 </div>
                 <Footer />
             </div>
-            <style jsx>{`
+            <style jsx global>{`
+                @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+
+                * {
+                    font-family: "Spoqa Han Sans Neo", "sans-serif";
+                    color: #ffffff;
+                }
+                pre {
+                    font-family: "Spoqa Han Sans Neo", "sans-serif";
+                    white-space: pre-wrap;
+                }
                 .wrapper {
                     text-align: center;
                     background: linear-gradient(90deg, #2b39a0, #000000);

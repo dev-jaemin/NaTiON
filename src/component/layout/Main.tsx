@@ -13,14 +13,15 @@ const Main: NextPage = () => {
 
     const text = [
         <div>
-            <h1>Google의 AI가</h1>
+            <h1>Google의 *AI가</h1>
             <h1>당신의 스타일을</h1>
             <h1>분석해 드립니다.</h1>
+            <div style={{ color: "lightgrey", opacity: "0.5" }}>* Google Teachable Machine</div>
         </div>,
         <div>
-            <h3 ref={h3Refs[0] as React.RefObject<HTMLDivElement>}>AI 최고</h3>
-            <h3 ref={h3Refs[1] as React.RefObject<HTMLDivElement>}>어쩌고 저쩌고</h3>
-            <h3 ref={h3Refs[2] as React.RefObject<HTMLDivElement>}>이러쿵 저러쿵</h3>
+            <h3 ref={h3Refs[0] as React.RefObject<HTMLDivElement>}>스타일을 찾기위해 노력하는 당신을 위해</h3>
+            <h3 ref={h3Refs[1] as React.RefObject<HTMLDivElement>}>"우리팀 이름"의 AI가 도와드리겠습니다.</h3>
+            <h3 ref={h3Refs[2] as React.RefObject<HTMLDivElement>}>멋진말멋진말</h3>
             <h3 ref={h3Refs[3] as React.RefObject<HTMLDivElement>}>아몰라 </h3>
         </div>,
     ];

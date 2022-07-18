@@ -16,12 +16,12 @@ const TestInput = (props: TestInputProps) => {
     return (
         <>
             <div className="test_wrapper">
-                <div style={{ margin: "2rem" }}>
-                    <img src={props.imgUrl} width="500px" alt="사진" />
+                <div style={{ margin: "1rem", overflow: "hidden" }}>
+                    <img src={props.imgUrl} width="500px" alt="사진" style={{ objectFit: "cover" }} />
                 </div>
                 <h1>{props.title}</h1>
                 <pre>{props.contentDetail}</pre>
-                <div>
+                <div style={{ marginTop: "5rem" }}>
                     <h5>성별을 선택해주세요.</h5>
                     <input id="select_gender" name="select_gender" value="woman" type="radio" onChange={props.onChangeGender} defaultChecked />
                     <label>여성</label>
@@ -29,19 +29,21 @@ const TestInput = (props: TestInputProps) => {
                     <label>남성</label>
                 </div>
 
-                <div style={{ margin: "30px" }}>
-                    <div className="file_input_area">
-                        <input type="file" id="input-file" accept="image/png, image/jpeg" style={{ visibility: "hidden" }} onChange={props.onChange} />
-                        <div>사진 파일 드래그</div>
+                <div style={{ margin: "30px 50px", textAlign: "-webkit-center" }}>
+                    <div style={{ maxWidth: "500px" }}>
+                        <input type="file" id="input-file" accept="image/png, image/jpeg" style={{ display: "none" }} onChange={props.onChange} />
+                        <label className="file_input_button" htmlFor="input-file">
+                            <img src="/image/attachicon.png" alt="attach icon" />
+                            얼굴 사진 업로드
+                        </label>
+                        <div className="complete_attach_photo">사진 첨부 완료!</div>
                     </div>
-                    <label className="file_input_button" htmlFor="input-file">
-                        혹은 이 버튼으로 업로드
-                    </label>
                 </div>
-                <p>
+                <p style={{ fontSize: "0.8rem", opacity: "0.9" }}>
                     안심하세요. <br />
-                    저희는 완전히 학습된 머신러닝 모델을 사용합니다. <br />
-                    사용자의 이미지는 절대 서버에 저장 및 모델 학습에 사용되지 않습니다.
+                    저희는 완전히 학습된 AI모델을 사용합니다. <br />
+                    사용자의 사진은 서버에 저장되거나, <br />
+                    모델 학습에 사용되지 않습니다. <br />
                 </p>
                 <button className="submit_btn" onClick={props.onSubmit}>
                     제출
@@ -50,30 +52,41 @@ const TestInput = (props: TestInputProps) => {
             <style jsx>{`
                 .test_wrapper {
                     color: #ffffff;
-                    padding: 2rem;
+                    padding: 1rem;
                 }
                 .submit_btn {
+                    display: block;
+                    margin: 0 auto;
+                    margin-top: 3rem;
+                    padding: 1rem 4rem;
+
                     border: 1px solid #ffffff;
                     border-radius: 5px;
                     background: none;
                     color: #ffffff;
-                    display: block;
-                    padding: 5px 20px;
-                    margin: 0 auto;
+                    font-size: 1.2rem;
+                    font-weight: 700;
                 }
                 .file_input_button {
                     cursor: pointer;
                 }
-                .file_input_area {
+                .file_input_button {
+                    display: flex;
+                    padding: 1rem 0rem;
+                    justify-content: center;
+                    align-items: center;
+
                     border: 1px solid #ffffff;
-                    text-align: center;
-                    display: inline-block;
-                    font-size: 0.5rem;
+                    border-radius: 5px;
+                    background-color: #ffffff;
+                    color: #000000;
+                    font-weight: 700;
                 }
-                #input-file {
-                    padding: 10px;
-                    width: 100%;
-                    display: block;
+                .complete_attach_photo {
+                    display: none;
+                    padding: 0.5rem;
+                    background-color: green;
+                    border-radius: 10px;
                 }
             `}</style>
         </>

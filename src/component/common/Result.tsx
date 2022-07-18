@@ -17,20 +17,22 @@ const Result = (props: ResultProps) => {
     const koreanGender = props.resultData.gender === "man" ? "남자" : "여자";
 
     let isValidFace = props.resultData.content === "No face";
-    const content = isValidFace ? "님 사람 아닌데요?" : `${props.subtitle} : ${props.resultData.content}`;
+    const content = isValidFace
+        ? "얼굴 인식에 실패했습니다.\n전체 얼굴이 나온 사진으로 다시 시도 바랍니다."
+        : `${props.subtitle} : ${props.resultData.content}`;
 
     const handleRetry = () => {
         Router.push(`/`);
     };
 
     return (
-        <div className="loading_wrapper">
+        <div className="result_wrapper">
             <h1>{props.title}</h1>
             <div>{koreanGender} 편</div>
-            <div>
+            <div className="result_section">
                 <h3>결과</h3>
                 <img src={props.imgUrl} alt="사진" />
-                <p>{content}</p>
+                <pre>{content}</pre>
                 <div className="retry_button" onClick={handleRetry}>
                     다시 하기
                 </div>
@@ -53,12 +55,9 @@ const Result = (props: ResultProps) => {
                 </Grid>
             </div>
             <style jsx>{`
-                .loading_wrapper {
-                    width: 100vw;
-                    height: 100vh;
+                .result_wrapper {
+                    padding: 1rem;
                     color: #ffffff;
-                    display: table-cell;
-                    vertical-align: middle;
                 }
                 .share_section {
                     margin: 3rem 1rem;
@@ -69,6 +68,9 @@ const Result = (props: ResultProps) => {
                     padding: 10px;
                     border: 1px solid #ffffff;
                     border-radius: 5px;
+                }
+                .result_section {
+                    overflow: hidden;
                 }
             `}</style>
         </div>

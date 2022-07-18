@@ -11,6 +11,10 @@ export default function Header(): JSX.Element {
         router.push("/");
     };
 
+    const onMenuClick = () => {
+        setIsToggled(false);
+    };
+
     return (
         <div style={{ position: "fixed", width: "100%", zIndex: "40" }}>
             <nav className="navBar">
@@ -35,7 +39,7 @@ export default function Header(): JSX.Element {
                 <ul className="toggleMenus">
                     {Object.keys(testInfo).map((item, index) => {
                         return (
-                            <li className="toggle_menu" key={index}>
+                            <li className="toggle_menu" key={index} onClick={onMenuClick}>
                                 <Link href={`/test/${item}`}>{testInfo[item as keyof typeof testInfo].shortTitle}</Link>
                             </li>
                         );
@@ -49,6 +53,7 @@ export default function Header(): JSX.Element {
                     width: 100%;
                     z-index: 35;
                     background-color: #333333;
+                    opacity: 0.9;
                     display: flex;
                     justify-content: space-around;
                     align-items: center;
@@ -60,6 +65,7 @@ export default function Header(): JSX.Element {
                 }
                 .navBar_menus {
                     display: flex;
+                    margin: 1rem;
                     list-style: none;
                     justify-content: space-around;
                     width: 50%;
@@ -68,6 +74,7 @@ export default function Header(): JSX.Element {
                     color: #ffffff;
                     text-decoration: none;
                     cursor: pointer;
+                    font-weight: 400;
                 }
                 .toggleMenus {
                     margin: 0px;

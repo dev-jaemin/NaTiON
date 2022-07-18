@@ -21,7 +21,7 @@ export default function TestGrid(): JSX.Element {
                                 style={{ background: `url("${testData[item as keyof typeof testData].imgUrl}") no-repeat right center #2B39A0` }}
                             >
                                 <h3>{testData[item as keyof typeof testData].title}</h3>
-                                <p>{testData[item as keyof typeof testData].content}</p>
+                                <p style={{ height: "5rem" }}>{testData[item as keyof typeof testData].content}</p>
                                 <div className="grid_item_btn">확인하러 가기 ▶</div>
                             </div>
                         </Grid>
@@ -47,6 +47,7 @@ export default function TestGrid(): JSX.Element {
                     background-size: cover;
                     background-blend-mode: multiply;
                     cursor: pointer;
+                    overflow: hidden;
                 }
                 .grid_item_btn {
                     margin-top: 0px;
