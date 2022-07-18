@@ -1,4 +1,5 @@
 import { Grid } from "@mui/material";
+import { useEffect } from "react";
 
 type ResultProps = {
     resultData: {
@@ -13,6 +14,12 @@ type ResultProps = {
     setLoadComplete: (arg0: boolean) => void;
 };
 
+declare global {
+    interface Window {
+        Kakao: any;
+    }
+}
+
 const Result = (props: ResultProps) => {
     const koreanGender = props.resultData.gender === "man" ? "남자" : "여자";
 
@@ -23,6 +30,27 @@ const Result = (props: ResultProps) => {
     const handleRetry = () => {
         props.setLoadComplete(false);
     };
+
+    const handleShare = () => {
+        if (typeof window !== undefined) {
+            if (window.Kakao) {
+                if (!window.Kakao.isInitialized()) {
+                    window.Kakao.init("ac952d15a9e51e14eab8bd573d48cfc9");
+                }
+
+                window.Kakao.Link.sendCustom({
+                    templateId: 79864,
+                });
+            }
+        }
+    };
+
+    useEffect(() => {
+        const script = document.createElement("script");
+        script.src = "https://developers.kakao.com/sdk/js/kakao.js";
+        script.async = true;
+        document.body.appendChild(script);
+    }, []);
 
     return (
         <div className="result_wrapper">
@@ -43,7 +71,7 @@ const Result = (props: ResultProps) => {
                 <h3>친구와 함께 즐겨보세요!</h3>
                 <Grid container spacing={0} style={{ justifyContent: "space-evenly" }}>
                     <Grid sm={6} md={2}>
-                        카카오톡
+                        <img src="/image/kakaotalk.png" alt="kakaotalk" onClick={handleShare} />
                     </Grid>
                     <Grid sm={6} md={2}>
                         인스타그램

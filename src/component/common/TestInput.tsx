@@ -34,7 +34,7 @@ const TestInput = (props: TestInputProps) => {
                     <div style={{ maxWidth: "500px" }}>
                         <input type="file" id="input-file" accept="image/png, image/jpeg" style={{ display: "none" }} onChange={props.onChange} />
                         <label className="file_input_button" htmlFor="input-file">
-                            <img src="/image/attachicon.png" alt="attach icon" />
+                            <img src="/image/attach_icon.png" alt="attach icon" />
                             얼굴 사진 업로드
                         </label>
                         <div className="complete_attach_photo" ref={props.imgAttachAlarm}>

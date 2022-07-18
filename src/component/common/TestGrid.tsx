@@ -29,9 +29,12 @@ export default function TestGrid(): JSX.Element {
                 })}
             </Grid>
             <style jsx>{`
+                .grid_wrapper {
+                    padding-bottom: 2rem;
+                }
                 @media (min-width: 768px) {
                     .grid_wrapper {
-                        padding: 0px 10rem;
+                        padding: 0rem 10rem 2rem 10rem;
                     }
                 }
                 .grid_item {

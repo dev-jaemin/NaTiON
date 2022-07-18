@@ -36,7 +36,7 @@ export default function Header(): JSX.Element {
                         );
                     })}
                 </ul>
-                <div style={{ width: "32px" }}></div>
+                <div style={{ width: "32px", height: "32px" }}> </div>
             </nav>
             {isToggled ? (
                 <ul className="toggleMenus">
@@ -55,7 +55,6 @@ export default function Header(): JSX.Element {
             )}
             <style jsx>{`
                 .navBar {
-                    width: 100%;
                     z-index: 35;
                     background-color: #333333;
                     opacity: 0.9;
