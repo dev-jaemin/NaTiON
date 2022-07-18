@@ -27,11 +27,37 @@ const Result = (props: ResultProps) => {
     const parsedTitle = isValidFace ? `${props.subtitle} : ${props.resultData.class}` : "";
     const content = isValidFace ? props.resultData.content : "얼굴 인식에 실패했습니다. 전체 얼굴이 나온 사진으로 다시 시도 바랍니다.";
 
+    const intents = {
+        android: "com.instagram.share.ADD_TO_STORY",
+        ios: "instagram-stories://share?source_application=com.my.app",
+        other: "https://www.instagram.com/",
+        pc: "https://www.instagram.com/",
+    };
+
     const handleRetry = () => {
         props.setLoadComplete(false);
     };
 
-    const handleShare = () => {
+    // 모바일 기기인지 여부, 만약 모바일이라면 안드로이드인지 애플인지도 파악
+    const isMobile = () => {
+        let mobile = /iphone|ipad|ipod|android/i.test(navigator.userAgent.toLowerCase());
+
+        if (mobile) {
+            let userAgent = navigator.userAgent.toLowerCase();
+
+            if (userAgent.search("android") > -1) {
+                return "android";
+            } else if (userAgent.search("iphone") > -1 || userAgent.search("ipod") > -1 || userAgent.search("ipad") > -1) {
+                return "ios";
+            } else {
+                return "other";
+            }
+        }
+
+        return "pc";
+    };
+
+    const KakaoShare = () => {
         if (typeof window !== undefined) {
             if (window.Kakao) {
                 if (!window.Kakao.isInitialized()) {
@@ -43,6 +69,34 @@ const Result = (props: ResultProps) => {
                 });
             }
         }
+    };
+
+    const InstaShare = () => {
+        const os = isMobile();
+
+        window.location.href = intents[os];
+
+        //ios는 앱 설치가 되어있지 않을 시 자동으로 스토어로 보내는 기능이 없으므로, 스토어로 보냄.
+        if (os === "ios") {
+            setTimeout(() => {
+                window.open("https://itunes.apple.com/kr/app/instagram/id389801252?mt=8");
+            }, 1500);
+        } else if (os === "other") {
+            setTimeout(() => {
+                window.alert("지원하지 않는 단말입니다.");
+            }, 1500);
+        }
+    };
+
+    const FacebookShare = () => {
+        const sendUrl = "192.249.19.184:443";
+        window.open("http://www.facebook.com/sharer/sharer.php?u=" + sendUrl);
+    };
+
+    const TwitterShare = () => {
+        const sendText = "요즘 핫한 AI 스타일링! anAlyst에게 스타일링 추천 받으세요!";
+        const sendUrl = "192.249.19.184:443";
+        window.open("https://twitter.com/intent/tweet?text=" + sendText + "&url=" + sendUrl);
     };
 
     useEffect(() => {
@@ -71,16 +125,16 @@ const Result = (props: ResultProps) => {
                 <h3>친구와 함께 즐겨보세요!</h3>
                 <Grid container spacing={0} style={{ justifyContent: "space-evenly" }}>
                     <Grid sm={6} md={2}>
-                        <img src="/image/kakaotalk.png" alt="kakaotalk" onClick={handleShare} />
+                        <img src="/image/kakaotalk.png" alt="kakaotalk" onClick={KakaoShare} />
                     </Grid>
                     <Grid sm={6} md={2}>
-                        인스타그램
+                        <img src="/image/instagram.png" alt="instagram" onClick={InstaShare} />
                     </Grid>
                     <Grid sm={6} md={2}>
-                        페이스북
+                        <img src="/image/facebook.png" alt="facebook" onClick={FacebookShare} />
                     </Grid>
                     <Grid sm={6} md={2}>
-                        트위터
+                        <img src="/image/twitter.png" alt="twitter" onClick={TwitterShare} width="48px" />
                     </Grid>
                 </Grid>
             </div>

@@ -7,7 +7,7 @@
         "subtitle": "당신에게 잘 어울리는 헤어스타일은?",
         "imgUrl": "/image/blackworldmap.jpg"
     },
-    "glassStyle": {
+    "glasses": {
         "title": "안경 스타일 찾기",
         "shortTitle": "안경 스타일",
         "content": "나라는 아주아주 중요해요 왜냐하면 중요하기 때문입니다 좀 더 길게 적을게요. 참고로 이건 안경 얘깁니다.",
@@ -15,7 +15,7 @@
         "subtitle": "당신에게 잘 어울리는 안경 스타일은?",
         "imgUrl": "/image/blackworldmap.jpg"
     },
-    "personalcolor": {
+    "personalColor": {
         "title": "내 퍼스널 컬러는?",
         "shortTitle": "퍼스널 컬러",
         "content": "봄 여름 가을 겨울 다 좋아요~~ 사실 퍼스널 컬러는 미신이에요 믿지마세요 ㅋㅋㅋ",

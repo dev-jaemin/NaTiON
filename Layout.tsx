@@ -1,8 +1,7 @@
 import Head from "next/head";
 import { useEffect, useRef } from "react";
-import Header from "./common/Header";
 import Footer from "./common/Footer";
-
+import Header from "./common/Header";
 type AppLayoutProps = {
     children: React.ReactNode;
 };
