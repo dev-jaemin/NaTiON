@@ -1,12 +1,10 @@
 import { ChangeEvent } from "react";
-import { NextPage } from "next";
 
 type TestInputProps = {
-    img: string;
     setLoading: Function;
-    onChange: (e: ChangeEvent<HTMLInputElement>) => {};
-    onChangeGender: (e: ChangeEvent<HTMLInputElement>) => {};
-    onSubmit: () => {};
+    onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+    onChangeGender: (e: ChangeEvent<HTMLInputElement>) => void;
+    onSubmit: () => void;
     imgUrl: string;
     title: string;
     contentDetail: string;
@@ -14,7 +12,7 @@ type TestInputProps = {
     gender: string;
 };
 
-const TestInput: NextPage = (props: TestInputProps) => {
+const TestInput = (props: TestInputProps) => {
     return (
         <>
             <div className="test_wrapper">

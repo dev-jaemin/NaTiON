@@ -9,25 +9,24 @@ import Result from "../common/Result";
 
 import testInfo from "../../testInfo.json";
 
-type ResultProps = {
-    resultData: {
-        class: string;
-        content: string;
-        gender: string;
-    };
+type resultDataType = {
+    class: string;
+    content: string;
+    gender: string;
 };
 
 const Test: NextPage = () => {
-    const [img, setImage] = useState("");
+    const [img, setImage] = useState<Blob>();
     const [gender, setGender] = useState("woman");
     const [loading, setLoading] = useState(false);
     const [loadComplete, setLoadComplete] = useState(false);
-    const [resultData, setResultData] = useState<ResultProps | {}>({});
+    const [resultData, setResultData] = useState<resultDataType>();
     const router = useRouter();
 
     const name = String(router.query.name) || "nation";
 
     const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+        if (!e.target.files) return;
         setImage(e.target.files[0]);
     };
 
@@ -37,7 +36,7 @@ const Test: NextPage = () => {
 
     const onSubmit = async () => {
         // 정상 파일 검사 후 post 요청
-        if (img !== "") {
+        if (img) {
             const formData = new FormData();
 
             formData.append("img", img, String(Date.now()));
@@ -65,14 +64,13 @@ const Test: NextPage = () => {
             {loading ? <Loading /> : ""}
             {!(loading || loadComplete) ? (
                 <TestInput
-                    img={img}
                     setLoading={setLoading}
                     onChange={onChange}
                     onChangeGender={onChangeGender}
                     onSubmit={onSubmit}
-                    imgUrl={testInfo[name] && testInfo[name].imgUrl}
-                    title={testInfo[name] && testInfo[name].title}
-                    contentDetail={testInfo[name] && testInfo[name].contentDetail}
+                    imgUrl={testInfo[name as keyof typeof testInfo] && testInfo[name as keyof typeof testInfo].imgUrl}
+                    title={testInfo[name as keyof typeof testInfo] && testInfo[name as keyof typeof testInfo].title}
+                    contentDetail={testInfo[name as keyof typeof testInfo] && testInfo[name as keyof typeof testInfo].contentDetail}
                     name={name}
                     gender={gender}
                 />
@@ -81,11 +79,11 @@ const Test: NextPage = () => {
             )}
             {loadComplete ? (
                 <Result
-                    resultData={resultData}
-                    title={testInfo[name] && testInfo[name].title}
+                    resultData={resultData as resultDataType}
+                    title={testInfo[name as keyof typeof testInfo] && testInfo[name as keyof typeof testInfo].title}
                     name={name}
-                    subtitle={testInfo[name] && testInfo[name].subtitle}
-                    imgUrl={testInfo[name] && testInfo[name].imgUrl}
+                    subtitle={testInfo[name as keyof typeof testInfo] && testInfo[name as keyof typeof testInfo].subtitle}
+                    imgUrl={testInfo[name as keyof typeof testInfo] && testInfo[name as keyof typeof testInfo].imgUrl}
                 />
             ) : (
                 ""

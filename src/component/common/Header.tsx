@@ -24,7 +24,7 @@ export default function Header(): JSX.Element {
                     {Object.keys(testInfo).map((item, index) => {
                         return (
                             <li className="navBar_menus_menu" key={index}>
-                                <Link href={`/test/${item}`}>{testInfo[item].shortTitle}</Link>
+                                <Link href={`/test/${item}`}>{testInfo[item as keyof typeof testInfo].shortTitle}</Link>
                             </li>
                         );
                     })}
@@ -36,7 +36,7 @@ export default function Header(): JSX.Element {
                     {Object.keys(testInfo).map((item, index) => {
                         return (
                             <li className="toggle_menu" key={index}>
-                                <Link href={`/test/${item}`}>{testInfo[item].shortTitle}</Link>
+                                <Link href={`/test/${item}`}>{testInfo[item as keyof typeof testInfo].shortTitle}</Link>
                             </li>
                         );
                     })}

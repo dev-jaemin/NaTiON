@@ -1,5 +1,4 @@
 import { Grid } from "@mui/material";
-import { NextPage } from "next";
 import Router from "next/router";
 
 type ResultProps = {
@@ -14,7 +13,7 @@ type ResultProps = {
     imgUrl: string;
 };
 
-const Result: NextPage = (props: ResultProps) => {
+const Result = (props: ResultProps) => {
     const koreanGender = props.resultData.gender === "man" ? "남자" : "여자";
 
     let isValidFace = props.resultData.content === "No face";
