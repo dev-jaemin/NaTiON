@@ -16,8 +16,9 @@ type ResultProps = {
 const Result = (props: ResultProps) => {
     const koreanGender = props.resultData.gender === "man" ? "남자" : "여자";
 
-    let isValidFace = props.resultData.content === "No face";
-    const content = isValidFace ? "얼굴 인식에 실패했습니다. 전체 얼굴이 나온 사진으로 다시 시도 바랍니다." : `${props.subtitle} : ${props.resultData.class}`;
+    let isValidFace = props.resultData.content !== "No face";
+    const parsedTitle = isValidFace ? `${props.subtitle} : ${props.resultData.class}` : "";
+    const content = isValidFace ? props.resultData.content : "얼굴 인식에 실패했습니다. 전체 얼굴이 나온 사진으로 다시 시도 바랍니다.";
 
     const handleRetry = () => {
         props.setLoadComplete(false);
@@ -31,8 +32,8 @@ const Result = (props: ResultProps) => {
                 <h3>결과</h3>
                 <img src={props.imgUrl} alt="사진" />
                 <div></div>
-                <h2>{content}</h2>
-                <p className="content_section">{props.resultData.content}</p>
+                <h2>{parsedTitle}</h2>
+                <p className="content_section">{content}</p>
                 <div></div>
                 <div className="retry_button" onClick={handleRetry}>
                     다시 하기
@@ -69,11 +70,15 @@ const Result = (props: ResultProps) => {
                 .retry_button {
                     display: inline-block;
                     padding: 10px;
-                    border: 1px solid #ffffff;
+                    width: 10rem;
+                    background-color: #ffffff;
+                    color: #000000;
+                    font-weight: 700;
                     border-radius: 5px;
                 }
                 .result_section {
                     overflow: hidden;
+                    margin-bottom: 5rem;
                 }
                 .content_section {
                     text-align: center;

@@ -29,7 +29,9 @@ export default function Header(): JSX.Element {
                     {Object.keys(testInfo).map((item, index) => {
                         return (
                             <li className="navBar_menus_menu" key={index}>
-                                <Link href={`/test/${item}`}>{testInfo[item as keyof typeof testInfo].shortTitle}</Link>
+                                <Link href={`/test/${item}`}>
+                                    <nav style={{ textDecoration: "none" }}>{testInfo[item as keyof typeof testInfo].shortTitle}</nav>
+                                </Link>
                             </li>
                         );
                     })}
@@ -41,7 +43,9 @@ export default function Header(): JSX.Element {
                     {Object.keys(testInfo).map((item, index) => {
                         return (
                             <li className="toggle_menu" key={index} onClick={onMenuClick}>
-                                <Link href={`/test/${item}`}>{testInfo[item as keyof typeof testInfo].shortTitle}</Link>
+                                <Link href={`/test/${item}`}>
+                                    <nav style={{ textDecoration: "none" }}>{testInfo[item as keyof typeof testInfo].shortTitle}</nav>
+                                </Link>
                             </li>
                         );
                     })}
@@ -73,7 +77,7 @@ export default function Header(): JSX.Element {
                 }
                 .navBar_menus_menu {
                     color: #ffffff;
-                    text-decoration: none;
+                    text-decoration: none !important;
                     cursor: pointer;
                     font-weight: 400;
                 }

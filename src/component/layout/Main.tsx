@@ -72,7 +72,7 @@ const Main: NextPage = () => {
                 }
                 .first_section {
                     position: fixed;
-                    padding-top: 3rem;
+                    padding-top: 1rem;
                     width: 100%;
                     opacity: 0;
                     transition: opacity 2s ease, transform 1s ease;
@@ -82,7 +82,7 @@ const Main: NextPage = () => {
                 }
                 .second_section {
                     position: fixed;
-                    padding-top: 3rem;
+                    padding-top: 1rem;
                     width: 100%;
                     top: 0px;
                     background: linear-gradient(45deg, #000000, #2b39a0);
@@ -97,6 +97,14 @@ const Main: NextPage = () => {
                     z-index: 10;
                     opacity: 0.7;
                     width: 100px;
+                }
+                @media (min-width: 768px) {
+                    .first_section {
+                        padding-top: 5rem;
+                    }
+                    .second_section {
+                        padding-top: 5rem;
+                    }
                 }
             `}</style>
         </div>
