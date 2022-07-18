@@ -28,7 +28,7 @@ const Result = (props: ResultProps) => {
     const content = isValidFace ? props.resultData.content : "얼굴 인식에 실패했습니다. 전체 얼굴이 나온 사진으로 다시 시도 바랍니다.";
 
     const intents = {
-        android: "com.instagram.share.ADD_TO_STORY",
+        android: "intent://instagram.com/#Intent;package=com.instagram.android;scheme=https;end",
         ios: "instagram-stories://share?source_application=com.my.app",
         other: "https://www.instagram.com/",
         pc: "https://www.instagram.com/",
@@ -80,11 +80,11 @@ const Result = (props: ResultProps) => {
         if (os === "ios") {
             setTimeout(() => {
                 window.open("https://itunes.apple.com/kr/app/instagram/id389801252?mt=8");
-            }, 1500);
+            }, 5000);
         } else if (os === "other") {
             setTimeout(() => {
                 window.alert("지원하지 않는 단말입니다.");
-            }, 1500);
+            }, 5000);
         }
     };
 
