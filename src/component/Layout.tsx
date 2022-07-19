@@ -26,9 +26,9 @@ export default function Layout({ children }: AppLayoutProps) {
                 <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" />
                 <meta property="og:type" content="website" />
                 <meta property="og:title" content="anAlyst" />
-                <meta property="og:url" content="http://192.249.19.184:443/" />
+                <meta property="og:url" content="https://192.249.19.184:443/" />
                 <meta property="og:description" content="anAlyst :: AI를 통한 나만의 스타일 찾기" />
-                <meta property="og:image" content="http://192.249.19.184:80/icon_blue.png" />
+                <meta property="og:image" content="https://192.249.19.184:443/img/icon_blue.png" />
             </Head>
             <div className="wrapper">
                 <Header />
