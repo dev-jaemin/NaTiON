@@ -14,6 +14,7 @@ export default function Layout({ children }: AppLayoutProps) {
         child.current && (child.current.style.opacity = "0");
         child.current && (child.current.style.opacity = "1");
     }, [children]);
+
     return (
         <>
             <Head>
@@ -21,7 +22,7 @@ export default function Layout({ children }: AppLayoutProps) {
                 <link rel="icon" href="/favicon.ico" />
                 <link rel="shortcut icon" href="/favicon.ico" />
                 <meta name="description" content="anAlyst :: AI를 통한 나만의 스타일 찾기" />
-                <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+                {/* <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" /> */}
                 <meta property="og:type" content="website" />
                 <meta property="og:title" content="anAlyst" />
                 <meta property="og:url" content="http://192.249.19.184:443/" />

@@ -20,9 +20,9 @@ const Main: NextPage = () => {
         </div>,
         <div>
             <h3 ref={h3Refs[0] as React.RefObject<HTMLDivElement>}>스타일을 찾기위해 노력하는 당신을 위해</h3>
-            <h3 ref={h3Refs[1] as React.RefObject<HTMLDivElement>}>"우리팀 이름"의 AI가 도와드리겠습니다.</h3>
-            <h3 ref={h3Refs[2] as React.RefObject<HTMLDivElement>}>멋진말멋진말</h3>
-            <h3 ref={h3Refs[3] as React.RefObject<HTMLDivElement>}>아몰라 </h3>
+            <h3 ref={h3Refs[1] as React.RefObject<HTMLDivElement>}></h3>
+            <h3 ref={h3Refs[2] as React.RefObject<HTMLDivElement>}>"anAlyst"의 AI가 도와드리겠습니다.</h3>
+            <h3 ref={h3Refs[3] as React.RefObject<HTMLDivElement>}></h3>
         </div>,
     ];
 

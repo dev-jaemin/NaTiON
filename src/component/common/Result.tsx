@@ -101,10 +101,15 @@ const Result = (props: ResultProps) => {
     };
 
     useEffect(() => {
-        const script = document.createElement("script");
-        script.src = "https://developers.kakao.com/sdk/js/kakao.js";
-        script.async = true;
-        document.body.appendChild(script);
+        const scriptKakaoSDK = document.createElement("script");
+        scriptKakaoSDK.src = "https://developers.kakao.com/sdk/js/kakao.js";
+        scriptKakaoSDK.async = true;
+        document.body.appendChild(scriptKakaoSDK);
+
+        const scriptAdFit = document.createElement("script");
+        scriptAdFit.src = "//t1.daumcdn.net/kas/static/ba.min.js";
+        scriptAdFit.async = true;
+        document.body.appendChild(scriptAdFit);
     }, []);
 
     return (
@@ -141,6 +146,13 @@ const Result = (props: ResultProps) => {
                     </Grid>
                 </Grid>
             </div>
+            <ins
+                className="kakao_ad_area"
+                style={{ position: "absolute", top: "50%", left: "5%" }}
+                data-ad-unit="DAN-rfBOCKOlhfNuoui8"
+                data-ad-width="160"
+                data-ad-height="600"
+            ></ins>
             <style jsx>{`
                 .result_wrapper {
                     padding: 1rem;
