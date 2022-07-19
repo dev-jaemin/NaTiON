@@ -45,13 +45,13 @@ const Test: NextPage = () => {
 
             formData.append("img", img, String(Date.now()));
 
+            console.log(`${process.env.NEXT_PUBLIC_APIHOST}/image?gender=${gender}&testName=${name}`);
             axios
                 .post(`${process.env.NEXT_PUBLIC_APIHOST}/image?gender=${gender}&testName=${name}`, formData, {
                     headers: { "Content-Type": "multipart/form-data" },
                     withCredentials: true,
                 })
                 .then((response) => {
-                    console.log(response.data);
                     setResultData(response.data);
                     setLoading(false);
                     setLoadComplete(true);

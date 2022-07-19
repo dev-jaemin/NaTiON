@@ -3,13 +3,20 @@ import { Grid } from "@mui/material";
 export default function Footer(): JSX.Element {
     return (
         <>
-            <div className="footer_wrapper" onClick={() => console.log("hhh")}>
+            <div className="footer_wrapper">
                 <Grid container>
                     <Grid item sm={12} md={3} lg={3}>
                         <div className="github_section">
                             <img src="/image/github.png" alt="github" width="32px" />
                             <a href="https://github.com/dev-jaemin">김재민</a>
                             <a href="https://github.com/twodf78">김태훈</a>
+                        </div>
+                    </Grid>
+                    <Grid item sm={12} md={3} lg={3}>
+                        <div className="github_section">
+                            <img src="/image/blog.png" alt="github" width="32px" />
+                            <a href="https://jaetsby.tistory.com/">김재민</a>
+                            <a href="https://twodf78.github.io">김태훈</a>
                         </div>
                     </Grid>
 

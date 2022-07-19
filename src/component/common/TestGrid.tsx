@@ -5,7 +5,6 @@ import testData from "../../testInfo.json";
 export default function TestGrid(): JSX.Element {
     // const router = useRouter();
     const handleClick = (name: string) => {
-        console.log(name);
         Router.push(`/test/${name}`);
     };
 
