@@ -12,13 +12,6 @@ export default function Footer(): JSX.Element {
                             <a href="https://github.com/twodf78">김태훈</a>
                         </div>
                     </Grid>
-                    <Grid item sm={12} md={3} lg={3}>
-                        <div className="github_section">
-                            <img src="/image/blog.png" alt="github" width="32px" />
-                            <a href="https://jaetsby.tistory.com/">김재민</a>
-                            <a href="https://twodf78.github.io">김태훈</a>
-                        </div>
-                    </Grid>
 
                     <Grid item sm={12} md={3} lg={3}>
                         <div className="copyright">ⓒ 2022. 김재민, 김태훈 All rights reserved.</div>

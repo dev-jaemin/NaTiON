@@ -14,14 +14,16 @@ export default function TestGrid(): JSX.Element {
                 {Object.keys(testData).map((item, index) => {
                     return (
                         <Grid item sm={12} md={6} key={index}>
-                            <div
-                                className="grid_item"
-                                onClick={() => handleClick(item)}
-                                style={{ background: `url("${testData[item as keyof typeof testData].imgUrl}") no-repeat center #ffffff` }}
-                            >
-                                <h3>{testData[item as keyof typeof testData].title}</h3>
-                                <p style={{ height: "5rem" }}>{testData[item as keyof typeof testData].content}</p>
-                                <div className="grid_item_btn">확인하러 가기 ▶</div>
+                            <div>
+                                <div
+                                    className="grid_item"
+                                    onClick={() => handleClick(item)}
+                                    style={{ background: `url("${testData[item as keyof typeof testData].imgUrl}") no-repeat center center #ffffff` }}
+                                >
+                                    <h3>{testData[item as keyof typeof testData].title}</h3>
+                                    <p style={{ height: "5rem" }}>{testData[item as keyof typeof testData].content}</p>
+                                    <div className="grid_item_btn">확인하러 가기 ▶</div>
+                                </div>
                             </div>
                         </Grid>
                     );
@@ -51,14 +53,18 @@ export default function TestGrid(): JSX.Element {
                     overflow: hidden;
                 }
                 .grid_item > * {
-                    color: #2b39a0 !important;
+                    display: inline-block;
+                    border-radius: 5px;
+                    padding: 5px;
+                    background-color: rgba(255, 255, 255, 0.9);
+                    color: #000000 !important;
                 }
                 .grid_item_btn {
                     margin-top: 0px;
                     display: inline-block;
                     padding: 10px;
 
-                    border: 2px solid #ffffff;
+                    border: 2px solid #000000;
                     border-radius: 5px;
                 }
             `}</style>

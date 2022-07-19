@@ -18,7 +18,7 @@ const TestInput = (props: TestInputProps) => {
         <>
             <div className="test_wrapper">
                 <div style={{ margin: "1rem", overflow: "hidden" }}>
-                    <img src={props.imgUrl} width="270px" height="270px" alt="사진" style={{ objectFit: "cover" }} className="test_image" />
+                    <img src={props.imgUrl} width="270px" height="270px" alt="사진" style={{ objectFit: "contain" }} className="test_image" />
                 </div>
                 <h1>{props.title}</h1>
                 <pre>{props.contentDetail}</pre>
