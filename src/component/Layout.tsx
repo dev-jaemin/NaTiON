@@ -21,6 +21,7 @@ export default function Layout({ children }: AppLayoutProps) {
                 <title>anAlyst :: AI를 통한 나만의 스타일 찾기</title>
                 <link rel="icon" href="/favicon.ico" />
                 <link rel="shortcut icon" href="/favicon.ico" />
+                <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
                 <meta name="description" content="anAlyst :: AI를 통한 나만의 스타일 찾기" />
                 <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" />
                 <meta property="og:type" content="website" />
