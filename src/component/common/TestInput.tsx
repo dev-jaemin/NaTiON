@@ -18,7 +18,7 @@ const TestInput = (props: TestInputProps) => {
         <>
             <div className="test_wrapper">
                 <div style={{ margin: "1rem", overflow: "hidden" }}>
-                    <img src={props.imgUrl} width="500px" alt="사진" style={{ objectFit: "cover" }} />
+                    <img src={props.imgUrl} width="270px" height="270px" alt="사진" style={{ objectFit: "cover" }} className="test_image" />
                 </div>
                 <h1>{props.title}</h1>
                 <pre>{props.contentDetail}</pre>
@@ -93,6 +93,12 @@ const TestInput = (props: TestInputProps) => {
                     display: flex;
                     justify-content: center;
                     margin: 2rem;
+                }
+                @media (min-width: 768px) {
+                    .test_image {
+                        width: 500px;
+                        height: 500px;
+                    }
                 }
             `}</style>
         </>

@@ -1,5 +1,5 @@
 import { Grid } from "@mui/material";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 type ResultProps = {
     resultData: {
@@ -22,6 +22,7 @@ declare global {
 }
 
 const Result = (props: ResultProps) => {
+    const wrapper = useRef<HTMLDivElement>();
     const koreanGender = props.resultData.gender === "man" ? "남자" : "여자";
 
     let isValidFace = props.resultData.content !== "No face";
@@ -110,20 +111,42 @@ const Result = (props: ResultProps) => {
         scriptAdFit.src = "//t1.daumcdn.net/kas/static/ba.min.js";
         scriptAdFit.async = true;
         document.body.appendChild(scriptAdFit);
+
+        const longAd = document.createElement("div");
+
+        if (window.innerWidth > 1000) {
+            longAd.innerHTML = `<ins
+                class="kakao_ad_area"
+                style="display:none; position: absolute; top: 20%; left: 5%"
+                data-ad-unit="DAN-rfBOCKOlhfNuoui8"
+                data-ad-width="160"
+                data-ad-height="600"
+                ></ins>`;
+            wrapper.current?.appendChild(longAd);
+        } else {
+            longAd.innerHTML = `<ins
+                class="kakao_ad_area"
+                style="display:none;"
+                data-ad-unit="DAN-8rdbniEQUyuVBBWV"
+                data-ad-width="320"
+                data-ad-height="50"
+                ></ins>`;
+            wrapper.current?.appendChild(longAd);
+        }
     }, []);
 
     return (
-        <div className="result_wrapper">
+        <div className="result_wrapper" ref={wrapper as React.RefObject<HTMLDivElement>}>
             <h1>{props.title}</h1>
             <div>{koreanGender} 편</div>
             <div className="result_section">
                 <h3>결과</h3>
-                <img src={props.resultData.img} alt="사진" />
+                {isValidFace ? <img src={props.resultData.img} alt="사진" width="270px" height="270px" className="result_img" /> : <></>}
                 <div></div>
                 <h3>{props.subtitle}</h3>
-                <div className="class_section">{parsedClass}</div>
+                {isValidFace ? <div className="class_section">{parsedClass}</div> : <></>}
                 <div></div>
-                <pre className="content_section">{content}</pre>
+                <p className="content_section">{content}</p>
                 <div></div>
                 <div className="retry_button" onClick={handleRetry}>
                     다시 하기
@@ -146,13 +169,7 @@ const Result = (props: ResultProps) => {
                     </Grid>
                 </Grid>
             </div>
-            <ins
-                className="kakao_ad_area"
-                style={{ position: "absolute", top: "50%", left: "5%" }}
-                data-ad-unit="DAN-rfBOCKOlhfNuoui8"
-                data-ad-width="160"
-                data-ad-height="600"
-            ></ins>
+
             <style jsx>{`
                 .result_wrapper {
                     padding: 1rem;
@@ -162,6 +179,12 @@ const Result = (props: ResultProps) => {
                     .share_section {
                         margin: 3rem 1rem;
                         padding: 10px 50px;
+                    }
+                }
+                @media (min-width: 1000px) {
+                    .result_img {
+                        width: 500px;
+                        height: 500px;
                     }
                 }
                 .retry_button {
@@ -187,7 +210,6 @@ const Result = (props: ResultProps) => {
                     padding: 1rem;
                     1color: #000000;
                     1background-color: rgba(255, 255, 255, 0.7);
-                    line-height: 0.8rem;
                 }
                 .class_section {
                     display: inline-block;
