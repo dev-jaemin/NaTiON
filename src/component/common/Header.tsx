@@ -72,9 +72,10 @@ export default function Header(): JSX.Element {
                     margin: 1rem;
                     list-style: none;
                     justify-content: space-around;
-                    width: 50%;
+                    width: 60%;
                 }
                 .navBar_menus_menu {
+                    padding: 0rem 0.1rem;
                     color: #ffffff;
                     text-decoration: none !important;
                     cursor: pointer;

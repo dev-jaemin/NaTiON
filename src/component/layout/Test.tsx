@@ -13,6 +13,7 @@ type resultDataType = {
     class: string;
     content: string;
     gender: string;
+    img: string;
 };
 
 const Test: NextPage = () => {

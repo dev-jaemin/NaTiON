@@ -83,8 +83,10 @@ const TestInput = (props: TestInputProps) => {
                 }
                 .complete_attach_photo {
                     display: none;
-                    padding: 0.5rem;
+                    margin: 0.5rem;
+                    padding: 0.2rem 0.5rem;
                     background-color: green;
+                    font-size: 0.8rem;
                     border-radius: 10px;
                 }
                 .attach_wrapper {

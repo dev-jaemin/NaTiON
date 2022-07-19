@@ -100,10 +100,10 @@ const Main: NextPage = () => {
                 }
                 @media (min-width: 768px) {
                     .first_section {
-                        padding-top: 5rem;
+                        padding-top: 10rem;
                     }
                     .second_section {
-                        padding-top: 5rem;
+                        padding-top: 10rem;
                     }
                 }
             `}</style>

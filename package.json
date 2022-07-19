@@ -3,7 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "dev": "cross-env HOST=aitest.com next dev",
+        "dev": "cross-env HOST=aitest.com next dev -p 443",
         "build": "next build && next export",
         "start": "next start -p 443",
         "lint": "next lint",

@@ -18,7 +18,7 @@ export default function TestGrid(): JSX.Element {
                             <div
                                 className="grid_item"
                                 onClick={() => handleClick(item)}
-                                style={{ background: `url("${testData[item as keyof typeof testData].imgUrl}") no-repeat right center #2B39A0` }}
+                                style={{ background: `url("${testData[item as keyof typeof testData].imgUrl}") no-repeat center #2B39A0` }}
                             >
                                 <h3>{testData[item as keyof typeof testData].title}</h3>
                                 <p style={{ height: "5rem" }}>{testData[item as keyof typeof testData].content}</p>

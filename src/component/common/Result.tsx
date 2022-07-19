@@ -6,6 +6,7 @@ type ResultProps = {
         class: string;
         content: string;
         gender: string;
+        img: string;
     };
     name: string;
     title: string;
@@ -24,7 +25,7 @@ const Result = (props: ResultProps) => {
     const koreanGender = props.resultData.gender === "man" ? "남자" : "여자";
 
     let isValidFace = props.resultData.content !== "No face";
-    const parsedTitle = isValidFace ? `${props.subtitle} : ${props.resultData.class}` : "";
+    const parsedClass = isValidFace ? props.resultData.class : "";
     const content = isValidFace ? props.resultData.content : "얼굴 인식에 실패했습니다. 전체 얼굴이 나온 사진으로 다시 시도 바랍니다.";
 
     const intents = {
@@ -112,18 +113,20 @@ const Result = (props: ResultProps) => {
             <div>{koreanGender} 편</div>
             <div className="result_section">
                 <h3>결과</h3>
-                <img src={props.imgUrl} alt="사진" />
+                <img src={props.resultData.img} alt="사진" />
                 <div></div>
-                <h2>{parsedTitle}</h2>
-                <p className="content_section">{content}</p>
+                <h3>{props.subtitle}</h3>
+                <div className="class_section">{parsedClass}</div>
+                <div></div>
+                <pre className="content_section">{content}</pre>
                 <div></div>
                 <div className="retry_button" onClick={handleRetry}>
                     다시 하기
                 </div>
             </div>
             <div className="share_section">
-                <h3>친구와 함께 즐겨보세요!</h3>
-                <Grid container spacing={0} style={{ justifyContent: "space-evenly" }}>
+                <h2>친구와 함께 즐겨보세요!</h2>
+                <Grid container spacing={0} style={{ justifyContent: "space-evenly", alignItems: "center" }}>
                     <Grid sm={6} md={2}>
                         <img src="/image/kakaotalk.png" alt="kakaotalk" onClick={KakaoShare} />
                     </Grid>
@@ -134,7 +137,7 @@ const Result = (props: ResultProps) => {
                         <img src="/image/facebook.png" alt="facebook" onClick={FacebookShare} />
                     </Grid>
                     <Grid sm={6} md={2}>
-                        <img src="/image/twitter.png" alt="twitter" onClick={TwitterShare} width="48px" />
+                        <img src="/image/twitter.png" alt="twitter" onClick={TwitterShare} width="40px" />
                     </Grid>
                 </Grid>
             </div>
@@ -172,6 +175,16 @@ const Result = (props: ResultProps) => {
                     padding: 1rem;
                     1color: #000000;
                     1background-color: rgba(255, 255, 255, 0.7);
+                    line-height: 0.8rem;
+                }
+                .class_section {
+                    display: inline-block;
+                    background: #eeeeee;
+                    color: #2b39a0;
+                    font-size: 1.5rem;
+                    font-weight: 800;
+                    padding: 0.5rem 1rem;
+                    border-radius: 10px;
                 }
             `}</style>
         </div>
