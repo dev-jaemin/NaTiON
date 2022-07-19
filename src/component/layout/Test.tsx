@@ -9,6 +9,8 @@ import Result from "../common/Result";
 
 import testInfo from "../../testInfo.json";
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+
 type resultDataType = {
     class: string;
     content: string;
